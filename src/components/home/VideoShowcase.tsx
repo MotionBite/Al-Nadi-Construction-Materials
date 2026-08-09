@@ -10,7 +10,14 @@ export function VideoShowcase() {
   const t = useTranslations('Index');
   const [playingId, setPlayingId] = useState<string | null>(null);
 
-  const videos = [
+  type VideoItem = {
+    id: string;
+    title: string;
+    videoUrl?: string;
+    image?: string;
+  };
+
+  const videos: VideoItem[] = [
     { id: '4', title: 'Construction Demo', videoUrl: '/video.mp4' },
     { id: '5', title: 'Hero Showcase', videoUrl: '/hero.mp4' },
     { id: '6', title: 'Project Overview', videoUrl: '/mp4.mp4' },
