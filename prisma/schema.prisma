@@ -1,0 +1,132 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id           String   @id @default(cuid())
+  slug         String   @unique
+  categoryId   String
+  brandId      String?
+  price        Float?
+  stock        Int      @default(0)
+  isFeatured   Boolean  @default(false)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  translations ProductTranslation[]
+  images       ProductImage[]
+  
+  category     Category @relation(fields: [categoryId], references: [id])
+  brand        Brand?   @relation(fields: [brandId], references: [id])
+}
+
+model ProductTranslation {
+  id          String   @id @default(cuid())
+  productId   String
+  locale      String   // 'ar' or 'en'
+  name        String
+  description String?
+  
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  
+  @@unique([productId, locale])
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  productId String
+  url       String
+  isMain    Boolean @default(false)
+  
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model Category {
+  id           String   @id @default(cuid())
+  slug         String   @unique
+  parentId     String?
+  image        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  translations CategoryTranslation[]
+  products     Product[]
+  
+  parent       Category?  @relation("SubCategories", fields: [parentId], references: [id])
+  children     Category[] @relation("SubCategories")
+}
+
+model CategoryTranslation {
+  id          String   @id @default(cuid())
+  categoryId  String
+  locale      String
+  name        String
+  
+  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  
+  @@unique([categoryId, locale])
+}
+
+model Brand {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  logo      String?
+  website   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  products  Product[]
+}
+
+model QuoteRequest {
+  id           String   @id @default(cuid())
+  companyName  String?
+  contactName  String
+  phone        String
+  email        String?
+  projectName  String?
+  materials    String   // JSON string of requested items
+  boqFile      String?  // URL to uploaded BOQ
+  status       String   @default("NEW") // NEW, PROCESSING, QUOTED, WON, LOST
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model BlogPost {
+  id           String   @id @default(cuid())
+  slug         String   @unique
+  author       String?
+  publishedAt  DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  translations BlogPostTranslation[]
+}
+
+model BlogPostTranslation {
+  id          String   @id @default(cuid())
+  blogPostId  String
+  locale      String
+  title       String
+  content     String
+  
+  blogPost    BlogPost @relation(fields: [blogPostId], references: [id], onDelete: Cascade)
+  
+  @@unique([blogPostId, locale])
+}
+
+model Testimonial {
+  id          String   @id @default(cuid())
+  name        String
+  role        String?
+  content_ar  String
+  content_en  String
+  rating      Int      @default(5)
+  createdAt   DateTime @default(now())
+}
