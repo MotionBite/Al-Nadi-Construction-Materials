@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-gold: #D4AF37;
-  --color-charcoal: #2D2D2D;
+  --color-gold: #f5a623;
+  --color-charcoal: #0f172a;
   --color-accent-blue: #0F4C81;
   
   --font-inter: var(--font-inter), sans-serif;
@@ -17,6 +17,19 @@
 }
 
 @theme inline {
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-marquee-rtl: marquee-rtl 30s linear infinite;
+
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+  
+  @keyframes marquee-rtl {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(50%); }
+  }
+
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
   
@@ -57,12 +70,12 @@
   --popover: #FFFFFF;
   --popover-foreground: #2D2D2D;
   
-  /* Primary is Gold */
-  --primary: #D4AF37;
+  /* Primary is Yellow */
+  --primary: #f5a623;
   --primary-foreground: #FFFFFF;
   
-  /* Secondary is Charcoal */
-  --secondary: #2D2D2D;
+  /* Secondary is Navy */
+  --secondary: #0f172a;
   --secondary-foreground: #FFFFFF;
   
   --muted: #E5E5E5;
@@ -82,7 +95,7 @@
   
   --border: #E5E5E5;
   --input: #E5E5E5;
-  --ring: #D4AF37;
+  --ring: #f5a623;
   
   --radius: 0.5rem;
 }
@@ -95,10 +108,10 @@
   --popover: #1E1E1E;
   --popover-foreground: #F8F8F8;
   
-  --primary: #D4AF37;
+  --primary: #f5a623;
   --primary-foreground: #121212;
   
-  --secondary: #2D2D2D;
+  --secondary: #0f172a;
   --secondary-foreground: #F8F8F8;
   
   --muted: #2D2D2D;
@@ -112,7 +125,7 @@
   
   --border: #2D2D2D;
   --input: #2D2D2D;
-  --ring: #D4AF37;
+  --ring: #f5a623;
 }
 
 @layer base {

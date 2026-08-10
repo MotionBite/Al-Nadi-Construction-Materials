@@ -1,81 +1,109 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { ScrollReveal } from '@/components/common/ScrollReveal';
-import { Link } from '@/i18n/routing';
-import { Button } from '@/components/ui/button';
-import { ShoppingCart, MessageCircle } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { Droplets, Lightbulb, Bath, Wrench } from 'lucide-react';
 import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { Link } from '@/i18n/routing';
 
 export function FeaturedProducts() {
-  const t = useTranslations('Index');
-
-  // Hardcoded for now
-  const products = [
-    { id: '1', title: 'Portland Cement 50kg', price: 'SAR 15.00', image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=600&auto=format&fit=crop', stock: true },
-    { id: '2', title: 'Steel Rebar 12mm', price: 'SAR 2,500/Ton', image: 'https://images.unsplash.com/photo-1533625414321-df6dfa35c596?q=80&w=600&auto=format&fit=crop', stock: true },
-    { id: '3', title: 'Concrete Blocks 20x20x40', price: 'SAR 2.50/pc', image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=600&auto=format&fit=crop', stock: true },
-    { id: '4', title: 'Dewalt Hammer Drill', price: 'SAR 450.00', image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=600&auto=format&fit=crop', stock: false },
+  const items = [
+    {
+      id: '1',
+      title: 'Plumbing',
+      description: 'Top-quality plumbing materials and fixtures for residential and commercial projects. Ensure durable water systems.',
+      image: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?q=80&w=800&auto=format&fit=crop',
+      icon: Droplets,
+    },
+    {
+      id: '2',
+      title: 'Light colourful',
+      description: 'Bright, energy-efficient, and colourful lighting solutions to illuminate and beautify any interior space.',
+      image: 'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?q=80&w=800&auto=format&fit=crop',
+      icon: Lightbulb,
+    },
+    {
+      id: '3',
+      title: 'Sanitary',
+      description: 'Premium sanitary wares, ceramics, and bathroom fittings combining hygiene, durability, and elegant design.',
+      image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop',
+      icon: Bath,
+    }
   ];
 
   return (
-    <section className="py-20 bg-[#F4F4F4]">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
+    <section className="py-24 bg-[#f4f7fb] relative overflow-hidden">
+      {/* Optional faint wavy background pattern can be added via CSS or SVG here */}
+      
+      <div className="container mx-auto px-4 max-w-7xl relative z-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
           <div>
             <ScrollReveal>
-              <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
-                {t('featuredProducts')}
+              <h2 className="text-3xl md:text-4xl font-black text-[#1e293b] tracking-tight">
+                Building Your Dream Projects
               </h2>
-              <div className="w-24 h-1 bg-primary"></div>
             </ScrollReveal>
           </div>
-          <ScrollReveal delay={0.2} direction="left">
+          <ScrollReveal delay={0.2}>
             <Link href="/products">
-              <Button variant="outline" className="mt-4 md:mt-0 border-primary text-primary hover:bg-primary hover:text-white">
-                View All Products
+              <Button className="mt-4 md:mt-0 bg-[#ff6b00] text-white hover:bg-[#e65c00] font-bold px-8 h-12 uppercase tracking-wider rounded-none">
+                All Products
               </Button>
             </Link>
           </ScrollReveal>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product, index) => (
-            <ScrollReveal key={product.id} delay={index * 0.1}>
-              <div className="bg-white group rounded-lg overflow-hidden border border-border hover:shadow-xl transition-all duration-300">
-                <div className="relative h-64 overflow-hidden bg-gray-100">
-                  <Image 
-                    src={product.image} 
-                    alt={product.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 right-4">
-                    {product.stock ? (
-                      <Badge className="bg-success text-white">In Stock</Badge>
-                    ) : (
-                      <Badge variant="destructive">Out of Stock</Badge>
-                    )}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {items.map((item, index) => (
+            <ScrollReveal key={item.id} delay={index * 0.1}>
+              <div className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-shadow duration-300 h-full flex flex-col group overflow-hidden">
+                {/* Top Image with concave curve */}
+                <div className="relative h-60 w-full mb-6 bg-gray-100">
+                  <div className="absolute inset-0 overflow-hidden rounded-t-xl">
+                    <Image 
+                      src={item.image} 
+                      alt={item.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  {/* White curve overlay at the bottom */}
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    viewBox="0 0 100 100" 
+                    preserveAspectRatio="none" 
+                    className="absolute bottom-0 left-0 w-full h-8 text-white z-10" 
+                    fill="currentColor"
+                  >
+                    <path d="M0 100 Q 50 0 100 100 Z" />
+                  </svg>
+
+                  {/* Orange Icon */}
+                  <div className="absolute -bottom-6 right-8 w-16 h-16 bg-[#ff6b00] group-hover:bg-[#e65c00] rounded-full flex items-center justify-center text-white border-[4px] border-white shadow-sm z-20 transition-all duration-300 group-hover:-translate-y-2">
+                    <item.icon className="w-6 h-6" strokeWidth={2} />
                   </div>
                 </div>
-                <div className="p-5">
-                  <Link href={`/products/${product.id}`}>
-                    <h3 className="font-bold text-lg text-secondary mb-2 hover:text-primary transition-colors line-clamp-2">
-                      {product.title}
-                    </h3>
-                  </Link>
-                  <p className="text-primary font-bold text-xl mb-4">{product.price}</p>
-                  
-                  <div className="flex gap-2">
-                    <Button className="flex-1 bg-secondary text-white hover:bg-primary" size="sm">
-                      <ShoppingCart className="w-4 h-4 mr-2" />
-                      Add to Quote
-                    </Button>
-                    <Button variant="outline" size="icon" className="border-green-500 text-green-500 hover:bg-green-500 hover:text-white shrink-0">
-                      <MessageCircle className="w-4 h-4" />
-                    </Button>
-                  </div>
+
+                {/* Content Area */}
+                <div className="flex flex-col flex-grow px-8 pb-10 pt-4 text-center items-center">
+                  <h3 className="text-[#1e293b] text-xl font-bold mb-4">
+                    {item.title}
+                  </h3>
+                  <p className="text-[#64748b] text-[15px] leading-relaxed mb-8 flex-grow px-2">
+                    {item.description}
+                  </p>
+
+                  <a 
+                    href="https://wa.me/1234567890" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center text-gray-900 font-bold text-xs uppercase tracking-widest hover:text-[#ff6b00] transition-colors mt-auto"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 mr-1.5">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                    </svg>
+                    WhatsApp
+                  </a>
                 </div>
               </div>
             </ScrollReveal>
