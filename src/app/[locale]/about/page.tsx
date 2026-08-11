@@ -20,7 +20,7 @@ export default function AboutPage() {
           <ScrollReveal direction="right">
             <div className="relative h-[400px] rounded-xl overflow-hidden shadow-xl">
               <Image 
-                src="https://images.unsplash.com/photo-1541888081622-15cb3dbb1e4c?q=80&w=1000&auto=format&fit=crop" 
+                src="/images/warehouse.png" 
                 alt="Al-Nadi Warehouse" 
                 fill 
                 className="object-cover"

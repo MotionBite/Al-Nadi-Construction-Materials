@@ -69,20 +69,19 @@ export function ProductCard({ id, title, price, image, inStock, tShop }: Product
         </p>
 
         {/* Buttons */}
-        <div className="flex gap-2 w-full mt-auto">
-          <Button className="flex-1 bg-[#1e293b] text-white hover:bg-[#ff6b00] uppercase tracking-wider text-[11px] font-bold h-11 rounded-none" size="sm">
-            <ShoppingCart className="w-4 h-4 mr-2 hidden sm:inline-block" />
+        <div className="flex items-center justify-center gap-6 w-full mt-auto">
+          <button className="flex items-center text-gray-900 font-bold text-xs uppercase tracking-widest hover:text-primary transition-colors">
+            <ShoppingCart className="w-4 h-4 mr-1.5" />
             {tShop('addToQuote')}
-          </Button>
+          </button>
           <a 
             href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMsg)}`} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex-shrink-0"
+            className="flex items-center text-gray-900 font-bold text-xs uppercase tracking-widest hover:text-[#25D366] transition-colors"
           >
-            <Button variant="outline" size="icon" className="h-11 w-11 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white rounded-none">
-              <MessageCircle className="w-4 h-4" />
-            </Button>
+            <MessageCircle className="w-4 h-4 mr-1.5" />
+            WhatsApp
           </a>
         </div>
       </div>

@@ -17,12 +17,12 @@ import {
 
 // Temporary mock data
 const mockProducts = [
-  { id: '1', title: 'Portland Cement 50kg', price: 'SAR 15.00', image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=600&auto=format&fit=crop', inStock: true, category: 'cement' },
-  { id: '2', title: 'Steel Rebar 12mm', price: 'SAR 2,500/Ton', image: 'https://images.unsplash.com/photo-1533625414321-df6dfa35c596?q=80&w=600&auto=format&fit=crop', inStock: true, category: 'steel' },
-  { id: '3', title: 'Concrete Blocks 20x20x40', price: 'SAR 2.50/pc', image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=600&auto=format&fit=crop', inStock: true, category: 'cement' },
-  { id: '4', title: 'Dewalt Hammer Drill', price: 'SAR 450.00', image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=600&auto=format&fit=crop', inStock: false, category: 'tools' },
-  { id: '5', title: 'PVC Pipe 4 inch', price: 'SAR 45.00', image: 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=600&auto=format&fit=crop', inStock: true, category: 'plumbing' },
-  { id: '6', title: 'Safety Helmet', price: 'SAR 25.00', image: 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=600&auto=format&fit=crop', inStock: true, category: 'safety' },
+  { id: '1', title: 'Premium Plumbing Set', price: 'SAR 150.00', image: '/mock-products/plumbing_set.png', inStock: true, category: 'plumbing' },
+  { id: '2', title: 'Industrial Lighting Fixture', price: 'SAR 250.00', image: '/mock-products/lighting_fixture.png', inStock: true, category: 'lighting' },
+  { id: '3', title: 'Modern Sanitary Wares', price: 'SAR 1,200.00', image: '/mock-products/sanitary_wares.png', inStock: true, category: 'sanitary' },
+  { id: '4', title: 'Construction Helmet', price: 'SAR 45.00', image: '/mock-products/safety_helmet.png', inStock: false, category: 'safety' },
+  { id: '5', title: 'Heavy Duty PVC Pipe', price: 'SAR 45.00', image: '/mock-products/pvc_pipe.png', inStock: true, category: 'plumbing' },
+  { id: '6', title: 'Dewalt Hammer Drill', price: 'SAR 450.00', image: '/mock-products/hammer_drill.png', inStock: true, category: 'tools' },
 ];
 
 export default async function ProductsPage() {
@@ -120,7 +120,7 @@ export default async function ProductsPage() {
 
           {/* Product Grid */}
           <div className="md:col-span-3 lg:col-span-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {mockProducts.map((product) => (
                 <ProductCard 
                   key={product.id}
