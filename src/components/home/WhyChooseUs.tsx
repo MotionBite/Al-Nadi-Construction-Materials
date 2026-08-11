@@ -34,13 +34,13 @@ export function WhyChooseUs() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {reasons.map((reason, index) => (
-            <ScrollReveal key={index} delay={index * 0.1}>
-              <div className="bg-white/5 border border-white/10 p-8 rounded-lg hover:bg-white/10 transition-colors">
+            <ScrollReveal key={index} delay={index * 0.1} className="h-full">
+              <div className="bg-white/5 border border-white/10 p-8 rounded-lg hover:bg-white/10 transition-colors h-full flex flex-col">
                 <div className="w-14 h-14 bg-primary/20 rounded-lg flex items-center justify-center mb-6">
                   <reason.icon className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold mb-3">{reason.title}</h3>
-                <p className="text-white/70 leading-relaxed">
+                <p className="text-white/70 leading-relaxed flex-grow">
                   {reason.desc}
                 </p>
               </div>

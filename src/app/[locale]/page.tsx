@@ -18,11 +18,11 @@ export default function Home() {
   return (
     <>
       <HeroSection />
+      <BrandSlider />
       <FeaturedProducts />
       <CategoryGrid />
       <ServicesAndSolutions />
       <WhyChooseUs />
-      <BrandSlider />
       <VideoShowcase />
       <GalleryGrid />
       <Testimonials />

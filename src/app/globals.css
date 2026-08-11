@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-gold: #f5a623;
+  --color-gold: #ff6b00;
   --color-charcoal: #0f172a;
   --color-accent-blue: #0F4C81;
   
@@ -70,8 +70,8 @@
   --popover: #FFFFFF;
   --popover-foreground: #2D2D2D;
   
-  /* Primary is Yellow */
-  --primary: #f5a623;
+  /* Primary is Orange */
+  --primary: #ff6b00;
   --primary-foreground: #FFFFFF;
   
   /* Secondary is Navy */
@@ -95,7 +95,7 @@
   
   --border: #E5E5E5;
   --input: #E5E5E5;
-  --ring: #f5a623;
+  --ring: #ff6b00;
   
   --radius: 0.5rem;
 }
@@ -108,7 +108,7 @@
   --popover: #1E1E1E;
   --popover-foreground: #F8F8F8;
   
-  --primary: #f5a623;
+  --primary: #ff6b00;
   --primary-foreground: #121212;
   
   --secondary: #0f172a;
@@ -125,7 +125,7 @@
   
   --border: #2D2D2D;
   --input: #2D2D2D;
-  --ring: #f5a623;
+  --ring: #ff6b00;
 }
 
 @layer base {
