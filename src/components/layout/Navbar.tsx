@@ -39,7 +39,7 @@ export function Navbar() {
             AN
           </div>
           <span className="font-bold text-xl tracking-tight text-foreground hidden sm:inline-block">
-            Al-Nadi
+            Al-Nadi Construction Materials
           </span>
         </Link>
 

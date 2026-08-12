@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         ? 'مواد بناء عالية الجودة وتوصيل سريع لموقع مشروعك.'
         : 'Premium construction materials delivered fast to your site.',
       url: 'https://alnadi.sa',
-      siteName: 'Al-Nadi',
+      siteName: 'Al-Nadi Construction Materials',
       locale: isAr ? 'ar_SA' : 'en_US',
       type: 'website',
     },

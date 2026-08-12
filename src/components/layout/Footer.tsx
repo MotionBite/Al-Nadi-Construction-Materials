@@ -20,7 +20,7 @@ export function Footer() {
                 AN
               </div>
               <span className="font-bold text-xl tracking-tight">
-                Al-Nadi
+                Al-Nadi Construction Materials
               </span>
             </Link>
             <p className="text-muted-foreground mb-6 max-w-sm">

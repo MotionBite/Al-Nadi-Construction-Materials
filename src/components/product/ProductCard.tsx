@@ -1,9 +1,9 @@
 'use client';
 
-import { Link } from '@/i18n/routing';
+import { Link, useRouter } from '@/i18n/routing';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ShoppingCart, MessageCircle } from 'lucide-react';
+import { ShoppingCart, Zap } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 import { useCart } from '@/context/CartContext';
@@ -21,8 +21,7 @@ export function ProductCard({ id, title, price, description, image, inStock }: P
   const { items, addItem } = useCart();
   const [showError, setShowError] = useState(false);
   const isInCart = items.some(item => item.id === id);
-  const whatsappNumber = '966146628280';
-  const whatsappMsg = `Hello, I'm interested in ordering: ${title}`;
+  const router = useRouter();
 
   const handleAddToCart = () => {
     if (isInCart) {
@@ -31,6 +30,13 @@ export function ProductCard({ id, title, price, description, image, inStock }: P
     } else {
       addItem({ id, title });
     }
+  };
+
+  const handleBuyNow = () => {
+    if (!isInCart) {
+      addItem({ id, title });
+    }
+    router.push('/cart');
   };
 
   return (
@@ -100,20 +106,17 @@ export function ProductCard({ id, title, price, description, image, inStock }: P
           <div className="flex items-center justify-center gap-6 w-full">
             <button 
               onClick={handleAddToCart}
-              className={`flex items-center font-bold text-xs uppercase tracking-widest transition-colors ${isInCart ? 'text-[#ff6b00]' : 'text-gray-900 hover:text-primary'}`}
+              className={`flex items-center font-bold text-xs uppercase tracking-widest transition-colors cursor-pointer ${isInCart ? 'text-[#ff6b00]' : 'text-gray-900 hover:text-primary'}`}
             >
               <ShoppingCart className="w-4 h-4 mr-1.5" />
               {isInCart ? 'Added to Cart' : 'Add to Cart'}
             </button>
-          <a 
-            href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMsg)}`} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center text-gray-900 font-bold text-xs uppercase tracking-widest hover:text-[#25D366] transition-colors"
+          <button 
+            onClick={handleBuyNow}
+            className="flex items-center text-gray-900 font-bold text-xs uppercase tracking-widest hover:text-[#ff6b00] transition-colors cursor-pointer"
           >
-            <MessageCircle className="w-4 h-4 mr-1.5" />
-            WhatsApp
-          </a>
+            Buy Now
+          </button>
           </div>
         </div>
       </div>

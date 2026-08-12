@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ShoppingCart, MessageCircle, FileText, ChevronRight } from 'lucide-react';
+import { ShoppingCart, Zap, FileText, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 
@@ -91,17 +91,12 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                 <ShoppingCart className="w-5 h-5 mr-2" />
                 {tShop('addToQuote')}
               </Button>
-              <a 
-                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMsg)}`} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex-1"
-              >
-                <Button size="lg" variant="outline" className="w-full border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white h-14 text-lg">
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  {tShop('whatsappOrder')}
+              <Link href="/cart" className="flex-1">
+                <Button size="lg" variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white h-14 text-lg">
+                  <Zap className="w-5 h-5 mr-2" />
+                  Buy Now
                 </Button>
-              </a>
+              </Link>
             </div>
 
             {/* Specifications */}

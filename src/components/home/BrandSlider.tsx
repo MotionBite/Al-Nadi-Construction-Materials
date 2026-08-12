@@ -10,39 +10,47 @@ export function BrandSlider() {
 
   // Hardcoded placeholders
   const brands = [
-    { id: '1', name: 'Sika', logo: 'https://placehold.co/400x200?text=Sika' },
-    { id: '2', name: 'Bosch', logo: 'https://placehold.co/400x200?text=Bosch' },
-    { id: '3', name: 'Makita', logo: 'https://placehold.co/400x200?text=Makita' },
-    { id: '4', name: 'Stanley', logo: 'https://placehold.co/400x200?text=Stanley' },
-    { id: '5', name: 'DeWalt', logo: 'https://placehold.co/400x200?text=DeWalt' },
-    { id: '6', name: 'National Paints', logo: 'https://placehold.co/400x200?text=National+Paints' },
+    { id: '1', name: 'Sika', logo: '/images/brands/sika.png' },
+    { id: '2', name: 'Bosch', logo: '/images/brands/bosch.png' },
+    { id: '3', name: 'Makita', logo: '/images/brands/makita.png' },
+    { id: '4', name: 'Stanley', logo: '/images/brands/stanley.png' },
+    { id: '5', name: 'DeWalt', logo: '/images/brands/dewalt.png' },
+    { id: '6', name: 'Caterpillar', logo: '/images/brands/caterpillar.png' },
   ];
 
   return (
-    <section className="py-16 bg-white border-y border-border overflow-hidden">
-      <div className="container mx-auto px-4 mb-12">
+    <section className="py-20 bg-gradient-to-b from-white to-secondary/5 border-y border-border overflow-hidden relative">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+      
+      <div className="container mx-auto px-4 mb-14 relative z-10">
         <ScrollReveal>
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-secondary">
-            {t('ourBrands')}
-          </h2>
+          <div className="text-center">
+            <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">Trusted Partners</span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-secondary">
+              {t('ourBrands')}
+            </h2>
+            <div className="w-24 h-1 bg-primary mx-auto mt-6 rounded-full"></div>
+          </div>
         </ScrollReveal>
       </div>
 
       <ScrollReveal delay={0.2}>
-        <div className="flex overflow-hidden relative group w-full">
+        <div className="flex overflow-hidden relative group w-full before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-[100px] before:bg-gradient-to-r before:from-white before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-[100px] after:bg-gradient-to-l after:from-secondary/5 after:to-transparent sm:before:w-[200px] sm:after:w-[200px]">
           <div 
             className={`flex w-max ${isRTL ? 'animate-marquee-rtl' : 'animate-marquee'} group-hover:[animation-play-state:paused]`}
           >
             {/* Double the array for smooth infinite loop */}
-            {[...brands, ...brands].map((brand, index) => (
+            {[...brands, ...brands, ...brands].map((brand, index) => (
               <div 
                 key={`${brand.id}-${index}`} 
-                className="h-24 w-[200px] sm:w-[250px] mx-8 flex items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0"
+                className="h-28 w-[160px] sm:h-32 sm:w-[180px] mx-3 sm:mx-4 flex items-center justify-center bg-white rounded-2xl border border-black/5 hover:border-primary/20 transition-all duration-300 shrink-0 overflow-hidden p-1"
               >
                 <img 
                   src={brand.logo} 
                   alt={brand.name} 
-                  className="max-h-full max-w-full object-contain"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                 />
               </div>
             ))}

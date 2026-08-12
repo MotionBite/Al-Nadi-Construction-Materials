@@ -21,7 +21,7 @@ export default function AboutPage() {
             <div className="relative h-[400px] rounded-xl overflow-hidden shadow-xl">
               <Image 
                 src="/images/warehouse.png" 
-                alt="Al-Nadi Warehouse" 
+                alt="Al-Nadi Construction Materials Warehouse" 
                 fill 
                 className="object-cover"
               />
