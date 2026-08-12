@@ -7,6 +7,7 @@ import { routing } from '@/i18n/routing';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { WhatsAppButton } from '@/components/common/WhatsAppButton';
+import { CartProvider } from '@/context/CartContext';
 import "../globals.css";
 
 const inter = Inter({
@@ -103,14 +104,16 @@ export default async function RootLayout({
             })
           }}
         />
-        <NextIntlClientProvider messages={messages}>
-          <Navbar />
-          <main className="flex-1">
-            {children}
-          </main>
-          <Footer />
-          <WhatsAppButton />
-        </NextIntlClientProvider>
+        <CartProvider>
+          <NextIntlClientProvider messages={messages}>
+            <Navbar />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
+            <WhatsAppButton />
+          </NextIntlClientProvider>
+        </CartProvider>
       </body>
     </html>
   );

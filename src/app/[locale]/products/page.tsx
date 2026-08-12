@@ -17,12 +17,12 @@ import {
 
 // Temporary mock data
 const mockProducts = [
-  { id: '1', title: 'Premium Plumbing Set', price: 'SAR 150.00', image: '/mock-products/plumbing_set.png', inStock: true, category: 'plumbing' },
-  { id: '2', title: 'Industrial Lighting Fixture', price: 'SAR 250.00', image: '/mock-products/lighting_fixture.png', inStock: true, category: 'lighting' },
-  { id: '3', title: 'Modern Sanitary Wares', price: 'SAR 1,200.00', image: '/mock-products/sanitary_wares.png', inStock: true, category: 'sanitary' },
-  { id: '4', title: 'Construction Helmet', price: 'SAR 45.00', image: '/mock-products/safety_helmet.png', inStock: false, category: 'safety' },
-  { id: '5', title: 'Heavy Duty PVC Pipe', price: 'SAR 45.00', image: '/mock-products/pvc_pipe.png', inStock: true, category: 'plumbing' },
-  { id: '6', title: 'Dewalt Hammer Drill', price: 'SAR 450.00', image: '/mock-products/hammer_drill.png', inStock: true, category: 'tools' },
+  { id: '1', title: 'Premium Plumbing Set', description: 'Complete high-quality plumbing setup for residential and commercial use. Durable and easy to install.', price: 'SAR 150.00', image: '/mock-products/plumbing_set.png', inStock: true, category: 'plumbing' },
+  { id: '2', title: 'Industrial Lighting Fixture', description: 'Heavy-duty industrial lighting perfect for warehouses and factories. Energy efficient with maximum brightness.', price: 'SAR 250.00', image: '/mock-products/lighting_fixture.png', inStock: true, category: 'lighting' },
+  { id: '3', title: 'Modern Sanitary Wares', description: 'Elegant and modern sanitary ware set with a sleek finish. Made from premium ceramic materials.', price: 'SAR 1,200.00', image: '/mock-products/sanitary_wares.png', inStock: true, category: 'sanitary' },
+  { id: '4', title: 'Construction Helmet', description: 'High-visibility safety helmet for construction sites. Impact resistant and comfortable for long hours.', price: 'SAR 45.00', image: '/mock-products/safety_helmet.png', inStock: false, category: 'safety' },
+  { id: '5', title: 'Heavy Duty PVC Pipe', description: 'Strong and durable PVC pipes designed for high-pressure water systems.', price: 'SAR 45.00', image: '/mock-products/pvc_pipe.png', inStock: true, category: 'plumbing' },
+  { id: '6', title: 'Dewalt Hammer Drill', description: 'Professional grade hammer drill for tough masonry and concrete work.', price: 'SAR 450.00', image: '/mock-products/hammer_drill.png', inStock: true, category: 'tools' },
 ];
 
 export default async function ProductsPage() {
@@ -126,10 +126,10 @@ export default async function ProductsPage() {
                   key={product.id}
                   id={product.id}
                   title={product.title}
+                  description={product.description}
                   price={product.price}
                   image={product.image}
                   inStock={product.inStock}
-                  tShop={tShop}
                 />
               ))}
             </div>

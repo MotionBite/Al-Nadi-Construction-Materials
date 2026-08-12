@@ -14,10 +14,12 @@ import {
   SheetDescription 
 } from '@/components/ui/sheet';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import { useCart } from '@/context/CartContext';
 
 export function Navbar() {
   const t = useTranslations('Nav');
   const [isOpen, setIsOpen] = useState(false);
+  const { items } = useCart();
 
   const navLinks = [
     { name: t('home'), href: '/' },
@@ -58,6 +60,17 @@ export function Navbar() {
         <div className="flex items-center gap-2">
           <LocaleSwitcher />
           
+          <Link href="/cart">
+            <Button variant="ghost" size="icon" className="relative hover:bg-accent hover:text-accent-foreground" aria-label="Cart">
+              <ShoppingCart className="h-5 w-5" />
+              {items.length > 0 && (
+                <span className="absolute top-0 right-0 inline-flex items-center justify-center w-4 h-4 text-[10px] font-bold text-white bg-red-500 rounded-full">
+                  {items.length}
+                </span>
+              )}
+            </Button>
+          </Link>
+
           <Link href="/quote" className="hidden sm:inline-block">
             <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
               {t('quote')}

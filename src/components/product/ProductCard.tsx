@@ -1,21 +1,37 @@
+'use client';
+
 import { Link } from '@/i18n/routing';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ShoppingCart, MessageCircle } from 'lucide-react';
 import Image from 'next/image';
+import { useState } from 'react';
+import { useCart } from '@/context/CartContext';
 
 interface ProductCardProps {
   id: string;
   title: string;
   price: string;
+  description?: string;
   image: string;
   inStock: boolean;
-  tShop: any; // Translation function
 }
 
-export function ProductCard({ id, title, price, image, inStock, tShop }: ProductCardProps) {
+export function ProductCard({ id, title, price, description, image, inStock }: ProductCardProps) {
+  const { items, addItem } = useCart();
+  const [showError, setShowError] = useState(false);
+  const isInCart = items.some(item => item.id === id);
   const whatsappNumber = '966146628280';
   const whatsappMsg = `Hello, I'm interested in ordering: ${title}`;
+
+  const handleAddToCart = () => {
+    if (isInCart) {
+      setShowError(true);
+      setTimeout(() => setShowError(false), 3000);
+    } else {
+      addItem({ id, title });
+    }
+  };
 
   return (
     <div className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-shadow duration-300 h-full flex flex-col group overflow-hidden border-none">
@@ -64,16 +80,31 @@ export function ProductCard({ id, title, price, image, inStock, tShop }: Product
           </h3>
         </Link>
         
-        <p className="text-[#ff6b00] font-bold text-xl mt-2 mb-8 flex-grow">
+        {description && (
+          <p className="text-[#64748b] text-[13px] leading-relaxed mb-4 flex-grow px-2 line-clamp-3">
+            {description}
+          </p>
+        )}
+
+        <p className="text-[#ff6b00] font-bold text-xl mt-2 mb-8">
           {price}
         </p>
 
         {/* Buttons */}
-        <div className="flex items-center justify-center gap-6 w-full mt-auto">
-          <button className="flex items-center text-gray-900 font-bold text-xs uppercase tracking-widest hover:text-primary transition-colors">
-            <ShoppingCart className="w-4 h-4 mr-1.5" />
-            {tShop('addToQuote')}
-          </button>
+        <div className="flex flex-col items-center w-full mt-auto relative">
+          {showError && (
+            <div className="absolute -top-8 text-red-500 text-xs font-semibold bg-red-50 px-3 py-1 rounded-full animate-bounce">
+              Already in your cart
+            </div>
+          )}
+          <div className="flex items-center justify-center gap-6 w-full">
+            <button 
+              onClick={handleAddToCart}
+              className={`flex items-center font-bold text-xs uppercase tracking-widest transition-colors ${isInCart ? 'text-[#ff6b00]' : 'text-gray-900 hover:text-primary'}`}
+            >
+              <ShoppingCart className="w-4 h-4 mr-1.5" />
+              {isInCart ? 'Added to Cart' : 'Add to Cart'}
+            </button>
           <a 
             href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMsg)}`} 
             target="_blank" 
@@ -83,6 +114,7 @@ export function ProductCard({ id, title, price, image, inStock, tShop }: Product
             <MessageCircle className="w-4 h-4 mr-1.5" />
             WhatsApp
           </a>
+          </div>
         </div>
       </div>
     </div>
