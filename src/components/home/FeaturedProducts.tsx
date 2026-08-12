@@ -138,7 +138,7 @@ export function FeaturedProducts() {
                         return (
                           <button 
                             onClick={() => handleAddToCart(item)}
-                            className={`flex items-center font-bold text-xs uppercase tracking-widest transition-colors cursor-pointer ${isInCart ? 'text-[#ff6b00]' : 'text-gray-900 hover:text-[#ff6b00]'}`}
+                            className={`flex-1 flex items-center justify-center font-bold text-[11px] sm:text-xs uppercase tracking-widest transition-colors cursor-pointer px-3 py-3 rounded-md shadow-sm ${isInCart ? 'bg-green-500 text-white hover:bg-green-600' : 'bg-[#ff6b00] text-white hover:bg-[#e65c00]'}`}
                           >
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5">
                             <circle cx="9" cy="21" r="1"></circle>
@@ -151,7 +151,7 @@ export function FeaturedProducts() {
                     })()}
                     <button 
                       onClick={() => handleBuyNow(item)}
-                      className="flex items-center text-gray-900 font-bold text-xs uppercase tracking-widest hover:text-[#ff6b00] transition-colors cursor-pointer"
+                      className="flex-1 flex items-center justify-center font-bold text-[11px] sm:text-xs uppercase tracking-widest transition-colors cursor-pointer px-3 py-3 rounded-md shadow-sm bg-[#ff6b00] text-white hover:bg-[#e65c00]"
                     >
                       Buy Now
                     </button>

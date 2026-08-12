@@ -103,17 +103,17 @@ export function ProductCard({ id, title, price, description, image, inStock }: P
               Already in your cart
             </div>
           )}
-          <div className="flex items-center justify-center gap-6 w-full">
+          <div className="flex items-center justify-center gap-4 w-full">
             <button 
               onClick={handleAddToCart}
-              className={`flex items-center font-bold text-xs uppercase tracking-widest transition-colors cursor-pointer ${isInCart ? 'text-[#ff6b00]' : 'text-gray-900 hover:text-primary'}`}
+              className={`flex-1 flex items-center justify-center font-bold text-[11px] sm:text-xs uppercase tracking-widest transition-colors cursor-pointer px-3 py-3 rounded-md shadow-sm ${isInCart ? 'bg-green-500 text-white hover:bg-green-600' : 'bg-[#ff6b00] text-white hover:bg-[#e65c00]'}`}
             >
               <ShoppingCart className="w-4 h-4 mr-1.5" />
               {isInCart ? 'Added to Cart' : 'Add to Cart'}
             </button>
           <button 
             onClick={handleBuyNow}
-            className="flex items-center text-gray-900 font-bold text-xs uppercase tracking-widest hover:text-[#ff6b00] transition-colors cursor-pointer"
+            className="flex-1 flex items-center justify-center font-bold text-[11px] sm:text-xs uppercase tracking-widest transition-colors cursor-pointer px-3 py-3 rounded-md shadow-sm bg-[#ff6b00] text-white hover:bg-[#e65c00]"
           >
             Buy Now
           </button>
